@@ -8,7 +8,7 @@ object ImageLoader {
     fun load(imageView: ImageView, url: String) {
         Picasso.get()
             .load(url)
-            .resize(50, 50)
+            .resize(150, 150)
             .centerCrop()
             .into(imageView)
     }
