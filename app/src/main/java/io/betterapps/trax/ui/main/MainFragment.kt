@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import io.betterapps.trax.R
 
 class MainFragment : Fragment() {
@@ -25,6 +26,15 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
+
+        viewModel.getMoviesResponse().observe(this, Observer { it ->
+            handleResponse(it)
+        })
+    }
+
+    private fun handleResponse(response: String) {
+
+        println("handle Response = ${response}")
     }
 
 }
