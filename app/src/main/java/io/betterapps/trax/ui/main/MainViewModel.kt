@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import io.betterapps.trax.network.RetrofitFactory
+import io.betterapps.trax.network.models.MovieResponse
 
 class MainViewModel : ViewModel() {
     // TODO: Implement the ViewModel
@@ -13,7 +14,7 @@ class MainViewModel : ViewModel() {
 
     val service = RetrofitFactory.getMoviesServiceInstance()
 
-    fun getMoviesResponse(): LiveData<String> = liveData {
+    fun getMoviesResponse(): LiveData<MovieResponse> = liveData {
         Log.d(TAG, "before call getMoviesResponse")
 
         try {
@@ -23,14 +24,14 @@ class MainViewModel : ViewModel() {
             if (response.isSuccessful) {
                 Log.d(TAG, "isSuccessful ${movieResponse}")
 
-                emit("Success ${movieResponse}")
+                emit(MovieResponse(false, movieResponse))
             } else {
                 Log.d(TAG, "Server failed ")
-                emit("Failed ${response.raw().request}")
+                emit(MovieResponse(true, null))
             }
         } catch (e: Throwable) {
             Log.d(TAG, "catch ${e.localizedMessage}")
-            emit("Exception ${e.localizedMessage}")
+            emit(MovieResponse(true, null))
         }
     }
 }

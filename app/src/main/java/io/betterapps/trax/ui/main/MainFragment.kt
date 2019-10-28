@@ -8,7 +8,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import io.betterapps.trax.R
+import io.betterapps.trax.adapter.MovieAdapter
+import io.betterapps.trax.network.models.Movie
+import io.betterapps.trax.network.models.MovieResponse
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
@@ -29,25 +33,31 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
 
-
-        request_button.setOnClickListener {
-            // Do something in response to button click
-            request()
-        }
+        // request after creation
+        request()
     }
 
-    public fun request(): Unit {
-//        CustomCertClient().run()
+    private fun request(): Unit {
         viewModel.getMoviesResponse().observe(this, Observer { it ->
             handleResponse(it)
         })
     }
 
-    private fun handleResponse(response: String) {
-
-        Toast.makeText(context, "Message ${response}", Toast.LENGTH_SHORT).show()
+    private fun handleResponse(response: MovieResponse) {
+        if (response.hasError) {
+            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+        } else {
+            response?.movies?.let { updateUIAfterResponse(it) }
+        }
     }
+
+    private fun updateUIAfterResponse(data: List<Movie>) {
+        recyclerview_movies.apply {
+            layoutManager = GridLayoutManager(context, 3)
+            adapter = MovieAdapter(data)
+        }
+    }
+
 
 }
