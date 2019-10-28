@@ -23,6 +23,7 @@ class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var recyclerView: RecyclerView
+    private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +37,14 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
+        // init layout
+        movieAdapter = MovieAdapter(emptyList())
+        recyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager = GridLayoutManager(context, 3)
+            adapter = movieAdapter
+        }
 
         // request after creation
         request()
@@ -56,12 +65,8 @@ class MainFragment : Fragment() {
     }
 
     private fun updateUIAfterResponse(data: List<Movie>) {
-        recyclerView.apply {
-            setHasFixedSize(true)
-            layoutManager = GridLayoutManager(context, 3)
-            adapter = MovieAdapter(data)
-        }
+        movieAdapter.data = data
+        movieAdapter.notifyDataSetChanged()
     }
-
 
 }
