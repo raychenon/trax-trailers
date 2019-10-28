@@ -18,13 +18,14 @@ class MainViewModel : ViewModel() {
 
         try {
             val response = service.getMoviesResponse()
+            print("URL = ${response.raw().request}")
             if (response.isSuccessful) {
                 Log.d(TAG, "isSuccessful ${response?.body()}")
 
                 emit("Success ${response?.body()}")
             } else {
                 Log.d(TAG, "Server failed ")
-                emit("Failed")
+                emit("Failed ${response.raw().request}")
             }
         } catch (e: Throwable) {
             Log.d(TAG, "catch ${e.localizedMessage}")

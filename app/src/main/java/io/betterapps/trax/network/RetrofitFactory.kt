@@ -6,7 +6,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object RetrofitFactory {
 
-    private val BASE_URL = "https://acloudgurualexa20190925.s3.eu-west-2.amazonaws.com/trax/"
+    private val BASE_URL = "https://acloudgurualexa20190925.s3.eu-west-2.amazonaws.com/"
 
     fun getMoviesServiceInstance(): MoviesService {
 //        val client = CustomCertClient()
