@@ -10,7 +10,6 @@
         android:id="@+id/imageview_movie_thumb"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_launcher_foreground"
         android:baselineAlignBottom="true"
         app:layout_constraintBaseline_toBaselineOf="@+id/textview_title"
         app:layout_constraintEnd_toEndOf="parent"

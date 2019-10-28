@@ -38,16 +38,19 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        // init layout
+        setupGrid()
+
+        request()
+    }
+
+    private fun setupGrid() {
         movieAdapter = MovieAdapter(emptyList())
-        recyclerView.apply {
+        with(recyclerView) {
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(context, 3)
             adapter = movieAdapter
         }
 
-        // request after creation
-        request()
     }
 
     private fun request(): Unit {

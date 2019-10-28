@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.movie_grid_item.view.*
 
 class MovieThumbViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), LayoutContainer {
 
+    // https://stackoverflow.com/questions/28364837/picasso-does-not-work-with-recycler-view-in-android
     override val containerView: View?
         get() = itemView
 
