@@ -1,7 +1,6 @@
 package io.betterapps.trax.network
 
 import io.betterapps.trax.network.models.Movie
-import io.betterapps.trax.network.models.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET
 
