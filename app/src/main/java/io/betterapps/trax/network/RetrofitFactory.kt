@@ -1,7 +1,9 @@
 package io.betterapps.trax.network
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 
 object RetrofitFactory {
@@ -9,13 +11,10 @@ object RetrofitFactory {
     private val BASE_URL = "https://acloudgurualexa20190925.s3.eu-west-2.amazonaws.com/"
 
     fun getMoviesServiceInstance(): MoviesService {
-//        val client = CustomCertClient()
 
         val retrofit = Retrofit.Builder()
-            .addConverterFactory(ScalarsConverterFactory.create())
-//            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create())
             .baseUrl(BASE_URL)
-//            .client(client.create())
             .build()
         val service = retrofit.create(MoviesService::class.java)
 

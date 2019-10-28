@@ -1,12 +1,13 @@
 package io.betterapps.trax.network
 
+import io.betterapps.trax.network.models.Movie
+import io.betterapps.trax.network.models.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 
 interface MoviesService {
 
     @GET("trax/movies.json")
-    suspend fun getMoviesResponse(): Response<String>
+    suspend fun getMoviesResponse(): Response<List<Movie>>
 
 }
