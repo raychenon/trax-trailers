@@ -8,12 +8,12 @@ object RetrofitFactory {
     private val BASE_URL = "https://testepg.r0ro.fr"
 
     fun getMoviesServiceInstance(): MoviesService {
-//        val client = HttpClient()
+        val client = CustomCertClient()
 
         val retrofit = Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create())
             .baseUrl(BASE_URL)
-//            .client(client.create())
+            .client(client.create())
             .build()
         val service = retrofit.create(MoviesService::class.java)
 

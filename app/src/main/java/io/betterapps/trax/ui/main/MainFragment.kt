@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import io.betterapps.trax.R
+import io.betterapps.trax.network.CustomCertClient
+import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
 
@@ -27,6 +29,16 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
 
+
+        request_button.setOnClickListener {
+            // Do something in response to button click
+            request()
+        }
+
+    }
+
+    public fun request(): Unit{
+//        CustomCertClient().run()
         viewModel.getMoviesResponse().observe(this, Observer { it ->
             handleResponse(it)
         })

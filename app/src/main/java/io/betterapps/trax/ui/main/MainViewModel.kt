@@ -17,7 +17,7 @@ class MainViewModel : ViewModel() {
         Log.d(TAG, "before call getMoviesResponse")
 
         try {
-            val response = service.getMoviessResponse()
+            val response = service.getMoviesResponse()
             if (response.isSuccessful) {
                 Log.d(TAG, "isSuccessful ${response?.body()}")
 
