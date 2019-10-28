@@ -1,19 +1,21 @@
 package io.betterapps.trax.network
 
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
+
 
 object RetrofitFactory {
 
-    private val BASE_URL = "https://testepg.r0ro.fr"
+    private val BASE_URL = "https://acloudgurualexa20190925.s3.eu-west-2.amazonaws.com/trax/"
 
     fun getMoviesServiceInstance(): MoviesService {
-        val client = CustomCertClient()
+//        val client = CustomCertClient()
 
         val retrofit = Retrofit.Builder()
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(ScalarsConverterFactory.create())
+//            .addConverterFactory(MoshiConverterFactory.create())
             .baseUrl(BASE_URL)
-            .client(client.create())
+//            .client(client.create())
             .build()
         val service = retrofit.create(MoviesService::class.java)
 
