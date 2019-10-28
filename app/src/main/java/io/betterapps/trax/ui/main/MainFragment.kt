@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -18,8 +19,10 @@ class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
 
@@ -35,7 +38,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    public fun request(): Unit{
+    public fun request(): Unit {
 //        CustomCertClient().run()
         viewModel.getMoviesResponse().observe(this, Observer { it ->
             handleResponse(it)
@@ -44,7 +47,7 @@ class MainFragment : Fragment() {
 
     private fun handleResponse(response: String) {
 
-        println("handle Response = ${response}")
+        Toast.makeText(context, "Message ${response}", Toast.LENGTH_SHORT).show()
     }
 
 }

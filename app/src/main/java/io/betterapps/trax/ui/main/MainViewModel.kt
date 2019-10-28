@@ -21,14 +21,14 @@ class MainViewModel : ViewModel() {
             if (response.isSuccessful) {
                 Log.d(TAG, "isSuccessful ${response?.body()}")
 
-//                emit(albumLiveState)
+                emit("Success ${response?.body()}")
             } else {
                 Log.d(TAG, "Server failed ")
-
+                emit("Failed")
             }
         } catch (e: Throwable) {
             Log.d(TAG, "catch ${e.localizedMessage}")
-//            emit(albumLiveState)
+            emit("Exception")
         }
     }
 }
