@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface MoviesService {
 
-    @GET("/movies")
+    @GET("/movies.json")
     suspend fun getMoviesResponse(): Response<String>
 }

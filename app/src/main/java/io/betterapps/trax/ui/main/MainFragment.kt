@@ -1,14 +1,13 @@
 package io.betterapps.trax.ui.main
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import io.betterapps.trax.R
-import io.betterapps.trax.network.CustomCertClient
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
@@ -34,7 +33,6 @@ class MainFragment : Fragment() {
             // Do something in response to button click
             request()
         }
-
     }
 
     public fun request(): Unit{
