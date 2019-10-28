@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import io.betterapps.trax.R
 import io.betterapps.trax.adapter.MovieAdapter
 import io.betterapps.trax.network.models.Movie
 import io.betterapps.trax.network.models.MovieResponse
-import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
 
@@ -22,12 +22,15 @@ class MainFragment : Fragment() {
     }
 
     private lateinit var viewModel: MainViewModel
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        val view = inflater.inflate(R.layout.main_fragment, container, false)
+        recyclerView = view.findViewById(R.id.recyclerview_movies)
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -53,7 +56,8 @@ class MainFragment : Fragment() {
     }
 
     private fun updateUIAfterResponse(data: List<Movie>) {
-        recyclerview_movies.apply {
+        recyclerView.apply {
+            setHasFixedSize(true)
             layoutManager = GridLayoutManager(context, 3)
             adapter = MovieAdapter(data)
         }
