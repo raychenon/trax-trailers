@@ -8,7 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitFactory {
 
-    private val BASE_URL = "https://acloudgurualexa20190925.s3.eu-west-2.amazonaws.com/"
+    private val BASE_URL = "https://testepg.r0ro.fr/"
 
     fun getMoviesServiceInstance(): MoviesService {
 
