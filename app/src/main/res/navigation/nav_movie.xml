@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/main_fragment">
+
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="io.betterapps.trax.ui.main.MainFragment"
+        tools:layout="@layout/main_fragment">
+
+        <action
+            android:id="@+id/action_main_fragment_to_detail_fragment"
+            app:destination="@id/movie_detail_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/movie_detail_fragment"
+        android:name="io.betterapps.trax.ui.main.MovieDetailFragment"
+        android:label="@string/movie_details_title"
+        tools:layout="@layout/movie_detail_fragment">
+        <argument
+            android:name="movie"
+            app:argType="String" />
+<!--            app:argType="io.betterapps.trax.network.models.Movie" />-->
+    </fragment>
+
+</navigation>
