@@ -11,6 +11,10 @@ import io.betterapps.trax.R
 
 class MovieDetailFragment : Fragment() {
 
+    companion object {
+        fun newInstance() = MovieDetailFragment()
+    }
+
     private lateinit var textTitle: TextView
     private lateinit var textDate: TextView
     private lateinit var imageView: ImageView

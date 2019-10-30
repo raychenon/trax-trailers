@@ -86,7 +86,7 @@ class MainFragment : Fragment() {
     }
 
     private fun navigateToMovie(movie: Movie) {
-        val direction = MainFragmentDirections.actionMainFragmentToDetailFragment("Bigger")
+        val direction = MainFragmentDirections.actionMainFragmentToDetailFragment()
         val bundle = bundleOf("movie" to "test")
         view?.findNavController()?.navigate(direction)
     }
