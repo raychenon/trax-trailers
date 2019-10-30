@@ -24,10 +24,11 @@
     <TextView
         android:id="@+id/textview_detail_title"
         style="@style/TextDetailTheme"
-        android:layout_width="246dp"
-        android:layout_height="27dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:paddingLeft="@dimen/grid_padding"
         android:singleLine="false"
+        android:maxLines="5"
         android:text="The most dangerous"
         android:textSize="22sp"
         android:textStyle="bold"

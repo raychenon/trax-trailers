@@ -61,7 +61,7 @@ class MovieDetailFragment : Fragment() {
 
         textTitle.text = arguments?.getString(ARGS_TITLE)
         textDate.text = arguments?.getString(ARGS_DATE)
-        textSynopsis.text = arguments?.getString(ARGS_SYNOPSIS)
+        textSynopsis.text = arguments?.getString(ARGS_SYNOPSIS,getString(R.string.no_synopsis))
         arguments?.getString(ARGS_IMAGE_URL)?.let {
             ImageLoader.load(imageView, it)
         }
