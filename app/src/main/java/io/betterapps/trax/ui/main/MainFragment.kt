@@ -89,7 +89,8 @@ class MainFragment : Fragment() {
         val bundle = bundleOf(
             MovieDetailFragment.ARGS_TITLE to movie?.title(),
             MovieDetailFragment.ARGS_DATE to movie?.releaseDate(),
-            MovieDetailFragment.ARGS_IMAGE_URL to movie?.thumbnail()
+            MovieDetailFragment.ARGS_IMAGE_URL to movie?.thumbnail(),
+            MovieDetailFragment.ARGS_MOVIE_URL to movie?.m4v()
         )
         view?.findNavController()?.navigate(R.id.action_main_fragment_to_detail_fragment, bundle)
     }

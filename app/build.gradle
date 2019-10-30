@@ -17,6 +17,11 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -58,6 +63,15 @@ dependencies {
     implementation "com.squareup.picasso:picasso:$picasso_version"
     //Okhttp3
     implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
+
+    // Videp Player
+    implementation "com.google.android.exoplayer:exoplayer:$exoplayer_version"
+    implementation ("com.google.android.exoplayer:extension-ima:$exoplayer_version"){
+        exclude module: 'support-v4'
+    }
+    implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
+    implementation "com.google.android.exoplayer:exoplayer-dash:$exoplayer_version"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
