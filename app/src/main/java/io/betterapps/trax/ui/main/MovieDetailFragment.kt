@@ -14,9 +14,9 @@ import io.betterapps.trax.image.ImageLoader
 class MovieDetailFragment : Fragment() {
 
     companion object {
-        public val ARGS_TITLE = "movie_title"
-        public val ARGS_DATE = "movie_release_date"
-        public val ARGS_IMAGE_URL = "movie_image_url"
+        val ARGS_TITLE = "movie_title"
+        val ARGS_DATE = "movie_release_date"
+        val ARGS_IMAGE_URL = "movie_image_url"
 
         fun newInstance() = MovieDetailFragment()
     }
@@ -45,9 +45,11 @@ class MovieDetailFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         textTitle.text = arguments?.getString(ARGS_TITLE, "Failed")
         textDate.text = arguments?.getString(ARGS_DATE)
         arguments?.getString(ARGS_IMAGE_URL)?.let {
+            Log.d(TAG, "URL image view = ${it} ")
             ImageLoader.load(imageView, it)
         }
     }
