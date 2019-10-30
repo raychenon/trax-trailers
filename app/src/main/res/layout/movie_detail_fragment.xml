@@ -24,15 +24,15 @@
     <TextView
         android:id="@+id/textview_detail_title"
         style="@style/TextDetailTheme"
-        android:layout_width="wrap_content"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:maxLines="5"
+        android:layout_marginTop="20dp"
         android:paddingLeft="@dimen/grid_padding"
         android:singleLine="false"
-        android:text="The most dangerous"
+        android:text="Star Wars: Rise of Skywalker"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/imageview_detail"
+        app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageview_detail"
         app:layout_constraintTop_toTopOf="parent" />
@@ -62,11 +62,14 @@
 
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/player_view"
-        android:layout_width="414dp"
+        android:layout_width="0dp"
         android:layout_height="288dp"
+        android:paddingBottom="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_detail_synopsis" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

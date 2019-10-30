@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ExtractorMediaSource
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
@@ -27,9 +28,11 @@ class MovieDetailFragment : Fragment() {
         val ARGS_MOVIE_URL = "movie_trailer_url"
         val ARGS_SYNOPSIS = "movie_sypnosis"
 
+
         fun newInstance() = MovieDetailFragment()
     }
 
+    private var player : SimpleExoPlayer? = null
     private val TAG = this.javaClass.name
     private lateinit var textTitle: TextView
     private lateinit var textDate: TextView
@@ -61,7 +64,7 @@ class MovieDetailFragment : Fragment() {
 
         textTitle.text = arguments?.getString(ARGS_TITLE)
         textDate.text = arguments?.getString(ARGS_DATE)
-        textSynopsis.text = arguments?.getString(ARGS_SYNOPSIS,getString(R.string.no_synopsis))
+        textSynopsis.text = arguments?.getString(ARGS_SYNOPSIS, getString(R.string.no_synopsis))
         arguments?.getString(ARGS_IMAGE_URL)?.let {
             ImageLoader.load(imageView, it)
         }
@@ -70,9 +73,7 @@ class MovieDetailFragment : Fragment() {
     }
 
     private fun initVideo(mp4VideoUri: Uri): Unit {
-
-        val player = ExoPlayerFactory.newSimpleInstance(context)
-
+        player = ExoPlayerFactory.newSimpleInstance(context)
 
         // Produces DataSource instances through which media data is loaded.
         val dataSourceFactory = DefaultDataSourceFactory(
@@ -84,9 +85,35 @@ class MovieDetailFragment : Fragment() {
         val videoSource =
             ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(mp4VideoUri)
         // Prepare the player with the source.
-        player.prepare(videoSource)
+        player?.prepare(videoSource)
 
         playerView.setPlayer(player)
+    }
+
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause ")
+
+        player?.let { it.setPlayWhenReady(false) }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop")
+    }
+
+    override fun onDestroyView() {
+        releasePlayer()
+        super.onDestroyView()
+        Log.d(TAG, "onDestroyView")
+    }
+
+    private fun releasePlayer() {
+        with(player) {
+            this?.stop()
+            this?.release()
+        }
     }
 
 }
