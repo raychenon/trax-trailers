@@ -86,11 +86,11 @@ class MainFragment : Fragment() {
     }
 
     private fun navigateToMovie(movie: Movie) {
-        val direction = MainFragmentDirections.actionMainFragmentToDetailFragment()
         val bundle = bundleOf(
             MovieDetailFragment.ARGS_TITLE to movie?.title(),
             MovieDetailFragment.ARGS_DATE to movie?.releaseDate(),
-            MovieDetailFragment.ARGS_IMAGE_URL to movie?.thumbnail())
-        view?.findNavController()?.navigate(R.id.action_main_fragment_to_detail_fragment,bundle)
+            MovieDetailFragment.ARGS_IMAGE_URL to movie?.thumbnail()
+        )
+        view?.findNavController()?.navigate(R.id.action_main_fragment_to_detail_fragment, bundle)
     }
 }

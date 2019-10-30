@@ -46,10 +46,9 @@ class MovieDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        textTitle.text = arguments?.getString(ARGS_TITLE, "Failed")
+        textTitle.text = arguments?.getString(ARGS_TITLE)
         textDate.text = arguments?.getString(ARGS_DATE)
         arguments?.getString(ARGS_IMAGE_URL)?.let {
-            Log.d(TAG, "URL image view = ${it} ")
             ImageLoader.load(imageView, it)
         }
     }
