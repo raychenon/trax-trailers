@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,6 +15,8 @@
     <TextView
         android:id="@+id/textview_detail_title"
         style="@style/TextDetailTheme"
+        android:textSize="22sp"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:paddingLeft="@dimen/grid_padding"
@@ -30,7 +36,7 @@
     <ImageView
         android:id="@+id/imageview_detail"
         android:layout_width="0dp"
-        android:layout_height="285dp"
+        android:layout_height="185dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_round"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,3 +54,4 @@
         app:layout_constraintTop_toBottomOf="@+id/imageview_detail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
