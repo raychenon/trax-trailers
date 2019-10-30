@@ -25,6 +25,7 @@ class MovieDetailFragment : Fragment() {
         val ARGS_DATE = "movie_release_date"
         val ARGS_IMAGE_URL = "movie_image_url"
         val ARGS_MOVIE_URL = "movie_trailer_url"
+        val ARGS_SYNOPSIS = "movie_sypnosis"
 
         fun newInstance() = MovieDetailFragment()
     }
@@ -32,6 +33,7 @@ class MovieDetailFragment : Fragment() {
     private val TAG = this.javaClass.name
     private lateinit var textTitle: TextView
     private lateinit var textDate: TextView
+    private lateinit var textSynopsis: TextView
     private lateinit var imageView: ImageView
     private lateinit var playerView: PlayerView
 
@@ -44,8 +46,9 @@ class MovieDetailFragment : Fragment() {
             val view = inflater.inflate(R.layout.movie_detail_fragment, container, false)
             textTitle = view.findViewById(R.id.textview_detail_title)
             textDate = view.findViewById(R.id.textview_detail_release_date)
+            textSynopsis = view.findViewById(R.id.textview_detail_synopsis)
             imageView = view.findViewById(R.id.imageview_detail)
-            playerView = view.findViewById(io.betterapps.trax.R.id.player_view)
+            playerView = view.findViewById(R.id.player_view)
             return view
         } catch (e: Exception) {
             Log.e(TAG, "onCreateView ", e)
@@ -58,6 +61,7 @@ class MovieDetailFragment : Fragment() {
 
         textTitle.text = arguments?.getString(ARGS_TITLE)
         textDate.text = arguments?.getString(ARGS_DATE)
+        textSynopsis.text = arguments?.getString(ARGS_SYNOPSIS)
         arguments?.getString(ARGS_IMAGE_URL)?.let {
             ImageLoader.load(imageView, it)
         }
@@ -73,7 +77,7 @@ class MovieDetailFragment : Fragment() {
         // Produces DataSource instances through which media data is loaded.
         val dataSourceFactory = DefaultDataSourceFactory(
             context,
-            Util.getUserAgent(context, "yourApplicationName")
+            Util.getUserAgent(context, "trax")
         )
         // This is the MediaSource representing the media to be played.
 
@@ -81,7 +85,6 @@ class MovieDetailFragment : Fragment() {
             ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(mp4VideoUri)
         // Prepare the player with the source.
         player.prepare(videoSource)
-
 
         playerView.setPlayer(player)
     }

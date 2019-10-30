@@ -90,7 +90,8 @@ class MainFragment : Fragment() {
             MovieDetailFragment.ARGS_TITLE to movie?.title(),
             MovieDetailFragment.ARGS_DATE to movie?.releaseDate(),
             MovieDetailFragment.ARGS_IMAGE_URL to movie?.thumbnail(),
-            MovieDetailFragment.ARGS_MOVIE_URL to movie?.m4v()
+            MovieDetailFragment.ARGS_MOVIE_URL to movie?.m4v(),
+            MovieDetailFragment.ARGS_SYNOPSIS to movie?.sypnosis()
         )
         view?.findNavController()?.navigate(R.id.action_main_fragment_to_detail_fragment, bundle)
     }
