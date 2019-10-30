@@ -87,32 +87,33 @@ class MovieDetailFragment : Fragment() {
         // Prepare the player with the source.
         player?.prepare(videoSource)
 
+        playerView.setPlayer(player)
     }
 
 
-//    override fun onPause() {
-//        super.onPause()
-//        Log.i(TAG, "onPause ")
-//
-////        player?.let { it.setPlayWhenReady(false) }
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        Log.i(TAG, "onStop ")
-//    }
-//
-//    override fun onDestroyView() {
-//        releasePlayer()
-//        super.onDestroyView()
-//        Log.i(TAG, "onDestroyView ")
-//    }
-//
-//    private fun releasePlayer() {
-//        with(player) {
-//            this?.stop()
-//            this?.release()
-//        }
-//    }
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause ")
+
+        player?.let { it.setPlayWhenReady(false) }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop")
+    }
+
+    override fun onDestroyView() {
+        releasePlayer()
+        super.onDestroyView()
+        Log.d(TAG, "onDestroyView")
+    }
+
+    private fun releasePlayer() {
+        with(player) {
+            this?.stop()
+            this?.release()
+        }
+    }
 
 }
