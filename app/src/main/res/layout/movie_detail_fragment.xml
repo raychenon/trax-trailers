@@ -62,11 +62,14 @@
 
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/player_view"
-        android:layout_width="414dp"
+        android:layout_width="0dp"
         android:layout_height="288dp"
+        android:paddingBottom="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_detail_synopsis" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
