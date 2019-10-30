@@ -1,6 +1,7 @@
 package io.betterapps.trax.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,23 +18,33 @@ import io.betterapps.trax.adapter.MovieAdapter
 import io.betterapps.trax.network.models.Movie
 import io.betterapps.trax.network.models.MovieResponse
 
+
 class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment()
     }
 
+    private val TAG = this.javaClass.name
     private lateinit var viewModel: MainViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var movieAdapter: MovieAdapter
 
+    // https://stackoverflow.com/questions/19874882/android-view-inflateexception-binary-xml-file-error-inflating-class-fragment
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.main_fragment, container, false)
-        recyclerView = view.findViewById(R.id.recyclerview_movies)
-        return view
+        try {
+            val view = inflater.inflate(R.layout.main_fragment, container, false)
+            recyclerView = view.findViewById(R.id.recyclerview_movies)
+            return view
+            // ... rest of body of onCreateView() ...
+        } catch (e: Exception) {
+            Log.e(TAG, "onCreateView ", e)
+            throw e
+        }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -75,7 +86,8 @@ class MainFragment : Fragment() {
     }
 
     private fun navigateToMovie(movie: Movie) {
+        val direction = MainFragmentDirections.actionMainFragmentToDetailFragment("Bigger")
         val bundle = bundleOf("movie" to "test")
-        this.view?.findNavController()?.navigate(R.id.movie_detail_fragment)
+        view?.findNavController()?.navigate(direction)
     }
 }
