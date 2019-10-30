@@ -76,6 +76,6 @@ class MainFragment : Fragment() {
 
     private fun navigateToMovie(movie: Movie) {
         val bundle = bundleOf("movie" to "test")
-        this.view?.findNavController()?.navigate(R.id.movie_detail_fragment, bundle)
+        this.view?.findNavController()?.navigate(R.id.movie_detail_fragment)
     }
 }
