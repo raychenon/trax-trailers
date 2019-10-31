@@ -21,7 +21,9 @@ The following code source uses :
 I'd have written unit test and [navigation tests](https://developer.android.com/guide/navigation/navigation-testing)
 And I'd explore more the video player **ExoPlayer**. 
 
-Feature : cache the data with a repository. Is the data static or keeps updated ?
+Feature 1 : cache the data with a repository. Is the data static or keeps updated ?
+
+Feature 2 : Adapt the image and video quality depending on the network speed.
 
 Note: the package name io.betterapps is named after my company betterapps.io
 
